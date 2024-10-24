@@ -15,17 +15,27 @@ export default function createApp(options = {}) {
   type BeverageRouteParams = {
     Params: { beverage: "coffee" | "tea" | "chai" },
     Querystring: { milk?: "yes" | "no", sugar?: "yes" | "no" },
-    Body: { kind: string }
+    Body: { kind: string },
+    Headers: { 'codecool-beverages-dietary': string }
   }
 
   app.post<BeverageRouteParams>('/api/beverages/:beverage', (request, reply) => {
     const { beverage } = request.params;
     const { milk, sugar } = request.query;
     const { kind } = request.body;
+    const { dietaryHeader } = request.headers
 
     const withItem: string[] = [];
     if (milk === "yes") {
-      withItem.push("milk")
+      if (dietaryHeader === 'lactose-intolerance') {
+        withItem.push("lf-milk");
+      } else if (dietaryHeader === 'vegan') {
+        withItem.push("oat-milk");
+      } else {
+        withItem.push("milk");
+      }
+    } else {
+
     }
     if (sugar === "yes") {
       withItem.push("sugar")
