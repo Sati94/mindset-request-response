@@ -28,3 +28,11 @@ CodeCool-Beverages-Dietary: vegan
 {"kind": "good"}
 
 ###
+
+POST {{host}}/api/beverages/coffee?sugar=yes&milk=no
+Content-Type: application/json
+CodeCool-Beverages-Dietary: vegan
+
+{"kind": "good"}
+
+###

@@ -25,6 +25,10 @@ export default function createApp(options = {}) {
     const { kind } = request.body;
     const { dietaryHeader } = request.headers
 
+    if (beverage !== "tea" && beverage !== "chai") {
+      return reply.status(418).send({ message: "I'm a teapot" });
+    }
+
     const withItem: string[] = [];
     if (milk === "yes") {
       if (dietaryHeader === 'lactose-intolerance') {
@@ -34,14 +38,13 @@ export default function createApp(options = {}) {
       } else {
         withItem.push("milk");
       }
-    } else {
-
     }
+
     if (sugar === "yes") {
       withItem.push("sugar")
     }
     const drinkName = kind ? `${kind} ${beverage}` : beverage
-    reply.status(200).send({ drink: drinkName, with: withItem })
+    reply.status(201).send({ drink: drinkName, with: withItem })
   })
   return app;
 }
