@@ -139,12 +139,12 @@ describe('Task 5', () => {
     ).it('should not include anything to %s', async (drink) => {
       const path = `/api/beverages/${drink}`
       const expectedBody = { drink: drink, with: [] }
-  
+
       const response = await app!
         .inject()
         .post(path)
       const body = JSON.parse(response.body)
-  
+
       expect(response.statusCode).toStrictEqual(200);
       expect(body).toStrictEqual(expectedBody);
     })

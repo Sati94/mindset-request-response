@@ -5,12 +5,43 @@
 Answer the following questions:
 
 - A good start to understand the repo is to check the `package.json`. What is the HTTP server library used here? What development tools are configured? 
+
+HTTP Szerver Könyvtár: A projekt a Fastify HTTP szerver könyvtárat használja, amit a dependencies szekcióban található.
+Fejlesztői Eszközök:
+TypeScript: A TypeScript kód típusellenőrzésére és fordítására szolgál.
+Jest: Egy tesztkeretrendszer, amellyel egységteszteket futtathatunk.
+Nodemon: Automatikusan újraindítja a szervert fejlesztés közben, amikor fájlváltozásokat észlel.
+ts-node: Közvetlenül futtatja a TypeScript fájlokat előzetes fordítás nélkül, ami hasznos fejlesztés során.
+Rimraf: Fájlok és könyvtárak törlésére szolgáló eszköz, itt a build mappa tisztítására használják.
+
 - What does the following scripts do? `dev`, `test`
+
+dev: A szervert fejlesztési módban futtatja a nodemon segítségével, ami figyeli a fájlváltozásokat, és a ts-node-ot használja a src/server.ts TypeScript fájl végrehajtásához. Ez lehetővé teszi a valós idejű frissítéseket a szerver manuális újraindítása nélkül.
+test: Futtatja a tesztcsomagot a Jest keretrendszer segítségével. Ez a parancs végrehajtja a projektben definiált teszteket.
+
 - What is the entry point of the server?
+
+server.ts 
+
 - What do you think why is the `app.ts` and the `server.ts` are separated? 
+
+Az app.ts jellemzően az alkalmazás logikáját tartalmazza, például az útvonalak definiálását és a middleware konfigurációkat, míg a server.ts a szerver inicializálásáért, elindításáért és a környezeti beállítások kezeléséért felelős. Ez a szétválasztás növeli a kód karbantarthatóságát, olvashatóságát és tesztelhetőségét.
+Az új végpontot valószínűleg az app.ts fájlba tennéd, ahol az alkalmazás útvonalai és logikája van definiálva. Ez biztosítja, hogy az útvonal logikája szervezett és elkülönített maradjon a szerver inicializáló kódjától.
+
+
 - If you would create a new endpoint in which file would you put it?
+
+Az új végpontot valószínűleg az app.ts fájlba tennéd, ahol az alkalmazás útvonalai és logikája van definiálva. Ez biztosítja, hogy az útvonal logikája szervezett és elkülönített maradjon a szerver inicializáló kódjától.
+
+
 - In the tests which method simulates the HTTP request?
+
+A Jest tesztekben a Fastify számára általában a fastify.inject() metódust használják, hogy szimulálják a HTTP kéréseket. Ez a módszer lehetővé teszi, hogy teszteld a Fastify útvonalakat úgy, hogy nem szükséges elindítani a szervert.
+
+
 - What do you think what does the `ts-node` package do?
+
+A ts-node csomag lehetővé teszi, hogy TypeScript fájlokat közvetlenül futtassunk lefordítás nélkül. Ez egy TypeScript végrehajtó motor, ami integrálódik a Node.js-sel, és lehetővé teszi a TypeScript fájlok azonnali végrehajtását, ami különösen hasznos fejlesztés közben a gyorsabb iterációs ciklusok érdekében.
 
 ## Task 2: Meet with Fastify
 
