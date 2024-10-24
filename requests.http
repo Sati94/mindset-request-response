@@ -20,3 +20,11 @@ Content-Type: application/json
 {"kind":"very good"}
 
 ###
+
+POST {{host}}/api/beverages/chai?sugar=yes&milk=no
+Content-Type: application/json
+CodeCool-Beverages-Dietary: vegan
+
+{"kind": "good"}
+
+###
