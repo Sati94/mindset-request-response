@@ -3,3 +3,20 @@
 ###
 
 GET {{host}}/api/hello
+
+###
+
+GET {{host}}/api/good-bye
+
+###
+
+POST {{host}}/api/beverages/tea?sugar=yes&milk=yes
+
+###
+
+POST {{host}}/api/beverages/tea?sugar=yes&milk=yes
+Content-Type: application/json
+
+{"kind":"very good"}
+
+###
